@@ -4,3 +4,4 @@ version = "0.1.0"
 authors = ["Gexon <alimgan@gmail.com>"]
 
 [dependencies]
+rgoap = "0.1"
