@@ -19,11 +19,11 @@ fn main() {
     pet_dog.pre_conditions.insert("рядом с собакой".to_string(), true);
     pet_dog.post_conditions.insert("пес счастлив".to_string(), true);
 
-    let mut pet_dog = Action::new("Замочить псину".to_string(), 1);
-    pet_dog.pre_conditions.insert("рядом с собакой".to_string(), true);
-    pet_dog.post_conditions.insert("пес мертв".to_string(), true);
+    let mut kill_dog = Action::new("Замочить псину".to_string(), 1);
+    kill_dog.pre_conditions.insert("рядом с собакой".to_string(), true);
+    kill_dog.post_conditions.insert("пес мертв".to_string(), true);
 
-    let possible_actions = [walk_to_dog, pet_dog, dog_wiggles_tail];
+    let possible_actions = [walk_to_dog, pet_dog, dog_wiggles_tail, kill_dog];
 
     // Это начальное состояние мира.
     let mut initial_state = State::new();
@@ -35,7 +35,7 @@ fn main() {
 
     // А это, целевое состояние. Не должен включать все состояния.
     let mut goal_state = State::new();
-    goal_state.insert("пес счастлив".to_string(), true);
+    goal_state.insert("пес мертв".to_string(), true);
 
     // Давайте найдем, какие действия нужно сделать, чтобы попасть туда.
     let planned_actions = plan(&initial_state, &goal_state, &possible_actions).unwrap();
