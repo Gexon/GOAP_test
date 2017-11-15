@@ -19,11 +19,15 @@ fn main() {
     pet_dog.pre_conditions.insert("рядом с собакой".to_string(), true);
     pet_dog.post_conditions.insert("пес счастлив".to_string(), true);
 
-    let mut kill_dog = Action::new("Замочить псину".to_string(), 1);
-    kill_dog.pre_conditions.insert("рядом с собакой".to_string(), true);
+    let mut kill_dog = Action::new("Выстрелить в псину".to_string(), 1);
+    kill_dog.pre_conditions.insert("ствол есть".to_string(), true);
     kill_dog.post_conditions.insert("пес мертв".to_string(), true);
 
-    let possible_actions = [walk_to_dog, pet_dog, dog_wiggles_tail, kill_dog];
+    let mut find_weapon = Action::new("Найти ствол".to_string(), 1);
+    find_weapon.pre_conditions.insert("ствол есть".to_string(), false);
+    find_weapon.post_conditions.insert("ствол есть".to_string(), true);
+
+    let possible_actions = [walk_to_dog, pet_dog, dog_wiggles_tail, kill_dog, find_weapon];
 
     // Это начальное состояние мира.
     let mut initial_state = State::new();
@@ -32,6 +36,7 @@ fn main() {
     initial_state.insert("пес счастлив".to_string(), false);
     initial_state.insert("Хвост колышется".to_string(), false);
     initial_state.insert("пес мертв".to_string(), false);
+    initial_state.insert("ствол есть".to_string(), false);
 
     // А это, целевое состояние. Не должен включать все состояния.
     let mut goal_state = State::new();
