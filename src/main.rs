@@ -36,7 +36,7 @@ fn main() {
     ap.set_cost("поиск крабов", 2);
     ap.set_cost("убить краба", 5);
     ap.set_cost("поиск камня", 3);
-    ap.set_cost("поиск косточки", 9);
+    ap.set_cost("поиск косточки", 8);
     ap.set_cost("помолиться о еде", 11);
 
     //print!("Planner:\n {:?}", &ap);
